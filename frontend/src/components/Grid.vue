@@ -1,7 +1,13 @@
 <template>
   <div id="grid">
-    <div class="grid-wrapper">
-
+    <div v-show="!showGrid" class="start-screen">
+    <h1>sNaPcAT</h1>
+    <h2>are you ready?</h2>
+    <!-- leaderboard component here -->
+    <button @click="startGame">Play</button>
+    </div>
+    <div v-show="showGrid" class="grid-wrapper">
+      <!-- point counter component here -->
     </div>
   </div>
 </template>
@@ -16,16 +22,19 @@ export default {
   name: 'Grid',
   data() {
     return {
+      // startScreen: true,
+      showGrid: false,
       grid: null,
       cards: null,
       gridSize: 30,
       guess: [],
     };
   },
-  mounted() {
-    this.createGrid();
-  },
   methods: {
+    startGame() {
+      this.showGrid = !this.showGrid;
+      this.createGrid();
+    },
     createGrid() {
       this.grid = document.querySelector('.grid-wrapper');
       for (let i = 0; i < this.gridSize; i += 1) {
@@ -51,10 +60,8 @@ export default {
       this.cards.forEach((card) => cardArray.push(card));
       while (shuffledCards.length !== this.gridSize) {
         const randomCard = cardArray[(Math.floor(Math.random() * cardArray.length))];
-        if (!shuffledCards.includes(randomCard)) {
-          shuffledCards.push(randomCard);
-          cardArray = cardArray.filter((card) => !shuffledCards.includes(card));
-        }
+        shuffledCards.push(randomCard);
+        cardArray = cardArray.filter((card) => !shuffledCards.includes(card));
       }
       this.cards = shuffledCards;
     },
@@ -165,6 +172,12 @@ export default {
   background: darkcyan;
   opacity: 0;
   border-radius: 5px;
+}
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
 }
 
 </style>
