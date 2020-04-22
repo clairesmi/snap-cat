@@ -33,7 +33,7 @@ export default {
       }
       this.cards = document.querySelectorAll('.card');
       this.shuffleCards();
-      this.cards.forEach((card, i) => {
+      this.cards.map((card, i) => {
         const cardText = card;
         if (i < this.gridSize / 2) {
           cardText.innerHTML = `<div class="card-text">${i + 1}</div>`;
@@ -41,11 +41,9 @@ export default {
         if (i >= this.gridSize / 2) {
           cardText.innerHTML = `<div class="card-text">${(i - this.gridSize / 2) + 1}</div>`;
         }
+        return cardText;
       });
-      this.cards.forEach((card) => {
-        const cardClick = card;
-        cardClick.addEventListener('click', this.handleClick);
-      });
+      this.cards.map((card) => card.addEventListener('click', this.handleClick));
     },
     shuffleCards() {
       const shuffledCards = [];
@@ -65,20 +63,37 @@ export default {
       if (this.guess.length !== 2) {
         this.guess.push(e.target);
       }
-      this.checkForMatch(e);
+      this.checkForMatch();
     },
-    checkForMatch(e) {
+    checkForMatch() {
       if (this.guess.length === 2) {
         if (this.guess[0].innerHTML === this.guess[1].innerHTML) {
-          this.match(e);
+          this.match();
         } else {
           this.noMatch();
         }
       }
     },
+    match() {
+      // increase points counter
+      this.guess.map((guess) => {
+        const guessStyle = guess;
+        guessStyle.style.boxShadow = '2px 2px 20px 2px green';
+        return guessStyle;
+      });
+      const vm = this;
+      setTimeout(() => {
+        vm.guess.map((card) => card.classList.replace('front', 'matched'));
+        this.guess.map((guess) => {
+          const guessStyle = guess;
+          guessStyle.style.boxShadow = '';
+          guessStyle.removeEventListener('click', this.handleClick);
+          return guessStyle;
+        });
+        this.guess = [];
+      }, 500);
+    },
     noMatch() {
-      // console.log('no match');
-      // e.target.classList.replace('front', 'back');
       this.guess.map((guess) => {
         const guessStyle = guess;
         guessStyle.style.boxShadow = '2px 2px 20px 2px red';
@@ -86,24 +101,14 @@ export default {
       });
       const vm = this;
       setTimeout(() => {
-        vm.guess.forEach((card) => card.classList.replace('front', 'back'));
+        vm.guess.map((card) => card.classList.replace('front', 'back'));
         this.guess.map((guess) => {
           const guessStyle = guess;
           guessStyle.style.boxShadow = '';
           return guessStyle;
         });
         this.guess = [];
-      }, 1000);
-      // console.log(this.guess);
-    },
-    match(e) {
-      // add and remove green box shadow
-      // remove cards from the grid (display none)
-      // increase points counter
-      e.target.style.boxShadow = '2px 2px 20px 2px green';
-      console.log('match');
-      this.guess = [];
-      console.log(this.guess);
+      }, 500);
     },
   },
 };
@@ -147,6 +152,19 @@ export default {
 }
 .grid-wrapper >>> .back > .card-text {
   display: none;
+}
+.grid-wrapper >>> .matched {
+  /* visibility: hidden; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 140px;
+  /* border: solid black 1px; */
+  margin: 10px;
+  background: darkcyan;
+  opacity: 0;
+  border-radius: 5px;
 }
 
 </style>
