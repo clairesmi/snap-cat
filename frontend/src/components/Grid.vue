@@ -7,6 +7,9 @@
     <button @click="startGame">Play</button>
     </div>
     <div v-show="showGrid" class="grid-wrapper">
+      <h1>sNaPcAT</h1>
+      <!-- TIMER HERE -->
+      <div>{{ timer }}</div>
       <!-- point counter component here -->
     </div>
   </div>
@@ -28,12 +31,17 @@ export default {
       cards: null,
       gridSize: 30,
       guess: [],
+      timer: null,
     };
   },
   methods: {
     startGame() {
       this.showGrid = !this.showGrid;
       this.createGrid();
+      this.startTimer();
+    },
+    startTimer() {
+      console.log('timerStart');
     },
     createGrid() {
       this.grid = document.querySelector('.grid-wrapper');
