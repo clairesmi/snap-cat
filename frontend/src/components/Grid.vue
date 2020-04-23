@@ -211,15 +211,14 @@ export default {
   display: none;
 }
 .grid-wrapper >>> .matched {
-  /* visibility: hidden; */
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100px;
   height: 140px;
-  /* border: solid black 1px; */
   margin: 10px;
   background: darkcyan;
+  /* remove opacity to maintain the card's place in the grid */
   opacity: 0;
   border-radius: 5px;
 }
