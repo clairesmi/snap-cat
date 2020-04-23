@@ -151,8 +151,8 @@ export default {
       const vm = this;
       setTimeout(() => {
         vm.guess.map((card) => card.classList.replace('front', 'back'));
-        this.guess.map((guess) => {
-          const chosenCard = guess;
+        this.guess.map((card) => {
+          const chosenCard = card;
           chosenCard.style.boxShadow = '';
           return chosenCard;
         });
