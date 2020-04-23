@@ -16,6 +16,22 @@
           {{ points }}
         </div>
       </div>
+      <div v-if="showModalForm">
+        <div class="modal-overlay">
+          <div class="modal-text">
+            <p>Excellent! Your time was:</p><p>{{ counter }}</p>
+            <p>Please enter your name to submit your time:</p>
+            <form>
+            <input
+            type="text"
+            placeholder="your name"
+            :v-model="playerName"
+            />
+            <button>Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +45,7 @@ const timer = new Timer();
 // create points counter (separate component)
 // set up backend for scoreboard
 // Refactor components to incorporate Vuex
+// Refactor modal to separate component
 export default {
   name: 'Grid',
   data() {
@@ -36,10 +53,12 @@ export default {
       showGrid: false,
       grid: null,
       cards: null,
-      gridSize: 30,
+      gridSize: 2,
       guess: [],
       counter: '00:00:00',
       points: 0,
+      showModalForm: false,
+      playerName: '',
     };
   },
   methods: {
@@ -102,7 +121,6 @@ export default {
       }
     },
     match() {
-      // increase points counter
       this.guess.map((guess) => {
         const guessStyle = guess;
         guessStyle.style.boxShadow = '2px 2px 20px 2px green';
@@ -144,6 +162,10 @@ export default {
     gameCompleted() {
       timer.stop();
       console.log(this.counter);
+      const vm = this;
+      setTimeout(() => {
+        vm.showModalForm = true;
+      }, 500);
     },
   },
 };
@@ -206,6 +228,26 @@ export default {
   flex-direction: column;
   justify-content: center;
   z-index: 1;
+}
+.modal-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-text {
+  background-color: beige;
+  box-shadow: 1px 1px 10px 1px gray;
+  font-family: "Pacifico", cursive;
+  font-size: 30px;
+  width: 50vw;
+  height: 70vh;
+  opacity: 1;
 }
 
 </style>
