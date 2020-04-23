@@ -9,13 +9,21 @@
     <div v-show="showGrid" class="grid-wrapper">
       <h1>sNaPcAT</h1>
       <!-- TIMER HERE -->
-      <div>{{ timer }}</div>
-      <!-- point counter component here -->
+      <div>
+        <div>{{ counter }}</div>
+        <!-- point counter component here -->
+        <div>
+          {{ points }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Timer } from 'easytimer.js';
+
+const timer = new Timer();
 // to dos:
 // create timer (separate component)
 // create points counter (separate component)
@@ -25,13 +33,13 @@ export default {
   name: 'Grid',
   data() {
     return {
-      // startScreen: true,
       showGrid: false,
       grid: null,
       cards: null,
       gridSize: 30,
       guess: [],
-      timer: null,
+      counter: '00:00:00',
+      points: 0,
     };
   },
   methods: {
@@ -41,7 +49,11 @@ export default {
       this.startTimer();
     },
     startTimer() {
-      console.log('timerStart');
+      // using easytimer.js to create a timer for each game
+      timer.start();
+      timer.addEventListener('secondsUpdated', () => {
+        this.counter = timer.getTimeValues().toString();
+      });
     },
     createGrid() {
       this.grid = document.querySelector('.grid-wrapper');
@@ -107,6 +119,10 @@ export default {
         });
         this.guess = [];
       }, 500);
+      this.points += 1;
+      if (this.points === this.gridSize / 2) {
+        this.gameCompleted();
+      }
     },
     noMatch() {
       this.guess.map((guess) => {
@@ -124,6 +140,10 @@ export default {
         });
         this.guess = [];
       }, 500);
+    },
+    gameCompleted() {
+      timer.stop();
+      console.log(this.counter);
     },
   },
 };
