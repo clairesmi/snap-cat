@@ -122,18 +122,18 @@ export default {
     },
     match() {
       this.guess.map((card) => {
-        const guessStyle = card;
-        guessStyle.style.boxShadow = '2px 2px 20px 2px green';
-        return guessStyle;
+        const chosenCard = card;
+        chosenCard.style.boxShadow = '2px 2px 20px 2px green';
+        return chosenCard;
       });
       const vm = this;
       setTimeout(() => {
         vm.guess.map((card) => card.classList.replace('front', 'matched'));
         this.guess.map((card) => {
-          const guessStyle = card;
-          guessStyle.style.boxShadow = '';
-          guessStyle.removeEventListener('click', this.handleClick);
-          return guessStyle;
+          const chosenCard = card;
+          chosenCard.style.boxShadow = '';
+          chosenCard.removeEventListener('click', this.handleClick);
+          return chosenCard;
         });
         this.guess = [];
       }, 500);
@@ -144,17 +144,17 @@ export default {
     },
     noMatch() {
       this.guess.map((card) => {
-        const guessStyle = card;
-        guessStyle.style.boxShadow = '2px 2px 20px 2px red';
-        return guessStyle;
+        const chosenCard = card;
+        chosenCard.style.boxShadow = '2px 2px 20px 2px red';
+        return chosenCard;
       });
       const vm = this;
       setTimeout(() => {
         vm.guess.map((card) => card.classList.replace('front', 'back'));
         this.guess.map((guess) => {
-          const guessStyle = guess;
-          guessStyle.style.boxShadow = '';
-          return guessStyle;
+          const chosenCard = guess;
+          chosenCard.style.boxShadow = '';
+          return chosenCard;
         });
         this.guess = [];
       }, 500);
