@@ -121,16 +121,16 @@ export default {
       }
     },
     match() {
-      this.guess.map((guess) => {
-        const guessStyle = guess;
+      this.guess.map((card) => {
+        const guessStyle = card;
         guessStyle.style.boxShadow = '2px 2px 20px 2px green';
         return guessStyle;
       });
       const vm = this;
       setTimeout(() => {
         vm.guess.map((card) => card.classList.replace('front', 'matched'));
-        this.guess.map((guess) => {
-          const guessStyle = guess;
+        this.guess.map((card) => {
+          const guessStyle = card;
           guessStyle.style.boxShadow = '';
           guessStyle.removeEventListener('click', this.handleClick);
           return guessStyle;
@@ -143,8 +143,8 @@ export default {
       }
     },
     noMatch() {
-      this.guess.map((guess) => {
-        const guessStyle = guess;
+      this.guess.map((card) => {
+        const guessStyle = card;
         guessStyle.style.boxShadow = '2px 2px 20px 2px red';
         return guessStyle;
       });
