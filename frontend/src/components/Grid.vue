@@ -10,7 +10,8 @@
       <h1>sNaPcAT</h1>
       <!-- TIMER HERE -->
       <div>
-        <div>{{ timer }}</div>
+        <!-- <div>{{ timer }}</div> -->
+        <game-timer :timer="timer"></game-timer>
         <points :points="points"></points>
       </div>
       <div v-if="showModalForm">
@@ -34,10 +35,11 @@
 </template>
 
 <script>
-import { Timer } from 'easytimer.js';
+// import { Timer } from 'easytimer.js';
 import Points from './Points.vue';
+import GameTimer from './GameTimer.vue';
 
-const timer = new Timer();
+// const timer = new Timer();
 // to dos:
 // create timer (separate component)
 // set up backend for scoreboard
@@ -47,6 +49,7 @@ export default {
   name: 'Grid',
   components: {
     Points,
+    GameTimer,
   },
   data() {
     return {
@@ -55,7 +58,6 @@ export default {
       cards: null,
       gridSize: 2,
       guess: [],
-      timer: '00:00:00',
       showModalForm: false,
       playerName: '',
     };
@@ -64,19 +66,15 @@ export default {
     points() {
       return this.$store.state.points;
     },
+    timer() {
+      return this.$store.state.timer;
+    },
   },
   methods: {
     startGame() {
       this.showGrid = !this.showGrid;
       this.createGrid();
-      this.startTimer();
-    },
-    startTimer() {
-      // using easytimer.js to create a timer for each game
-      timer.start();
-      timer.addEventListener('secondsUpdated', () => {
-        this.timer = timer.getTimeValues().toString();
-      });
+      this.$store.commit('timerCount');
     },
     createGrid() {
       this.grid = document.querySelector('.grid-wrapper');
@@ -165,11 +163,9 @@ export default {
     },
     incrementPoints() {
       this.$store.commit('increment');
-      console.log(this.$store.state.points);
     },
     gameCompleted() {
-      timer.stop();
-      console.log(this.timer);
+      this.$store.commit('stopTimer');
       const vm = this;
       setTimeout(() => {
         vm.showModalForm = true;
