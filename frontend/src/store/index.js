@@ -27,8 +27,4 @@ export default new Vuex.Store({
       timer.stop();
     },
   },
-  actions: {
-  },
-  modules: {
-  },
 });
