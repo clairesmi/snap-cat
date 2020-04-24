@@ -1,60 +1,39 @@
 <template>
   <div id="grid">
     <div v-show="!showGrid" class="start-screen">
-    <h1>sNaPcAT</h1>
-    <h2>are you ready?</h2>
-    <!-- leaderboard component here -->
-    <button @click="startGame">Play</button>
+      <start-screen v-on:game-started="startGame"></start-screen>
     </div>
-    <div v-show="showGrid" class="grid-wrapper">
+    <div v-show="showGrid">
       <h1>sNaPcAT</h1>
-      <div>
         <game-timer :timer="timer"></game-timer>
         <points :points="points"></points>
-      </div>
-      <div v-if="showModalForm">
-        <div class="modal-overlay">
-          <div class="modal-text">
-            <p>Excellent! Your time was:</p><p>{{ timer }}</p>
-            <p>Please enter your name to submit your time:</p>
-            <form>
-            <input
-            type="text"
-            placeholder="your name"
-            :v-model="playerName"
-            />
-            <button>Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
+      <div class="grid-wrapper"></div>
+      <modal-form v-if="showModalForm" :playerName="playerName" :timer="timer"></modal-form>
     </div>
   </div>
 </template>
 
 <script>
-// import { Timer } from 'easytimer.js';
+import StartScreen from './StartScreen.vue';
 import Points from './Points.vue';
 import GameTimer from './GameTimer.vue';
-
-// const timer = new Timer();
+import ModalForm from './ModalForm.vue';
 // to dos:
-// create timer (separate component)
-// set up backend for scoreboard
-// Refactor components to incorporate Vuex
-// Refactor modal to separate component
+// set up backend for leaderboard
 export default {
   name: 'Grid',
   components: {
     Points,
     GameTimer,
+    ModalForm,
+    StartScreen,
   },
   data() {
     return {
       showGrid: false,
       grid: null,
       cards: null,
-      gridSize: 2,
+      gridSize: 30,
       guess: [],
       showModalForm: false,
       playerName: '',
@@ -224,31 +203,4 @@ export default {
   opacity: 0;
   border-radius: 5px;
 }
-.start-screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 1;
-}
-.modal-overlay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.modal-text {
-  background-color: beige;
-  box-shadow: 1px 1px 10px 1px gray;
-  font-family: "Pacifico", cursive;
-  font-size: 30px;
-  width: 50vw;
-  height: 70vh;
-  opacity: 1;
-}
-
 </style>
