@@ -8,9 +8,7 @@
     </div>
     <div v-show="showGrid" class="grid-wrapper">
       <h1>sNaPcAT</h1>
-      <!-- TIMER HERE -->
       <div>
-        <!-- <div>{{ timer }}</div> -->
         <game-timer :timer="timer"></game-timer>
         <points :points="points"></points>
       </div>
