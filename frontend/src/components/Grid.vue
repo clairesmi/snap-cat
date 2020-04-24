@@ -10,16 +10,13 @@
       <h1>sNaPcAT</h1>
       <!-- TIMER HERE -->
       <div>
-        <div>{{ counter }}</div>
-        <!-- point counter component here -->
-        <div>
-          {{ points }}
-        </div>
+        <div>{{ timer }}</div>
+        <points :points="points"></points>
       </div>
       <div v-if="showModalForm">
         <div class="modal-overlay">
           <div class="modal-text">
-            <p>Excellent! Your time was:</p><p>{{ counter }}</p>
+            <p>Excellent! Your time was:</p><p>{{ timer }}</p>
             <p>Please enter your name to submit your time:</p>
             <form>
             <input
@@ -38,16 +35,19 @@
 
 <script>
 import { Timer } from 'easytimer.js';
+import Points from './Points.vue';
 
 const timer = new Timer();
 // to dos:
 // create timer (separate component)
-// create points counter (separate component)
 // set up backend for scoreboard
 // Refactor components to incorporate Vuex
 // Refactor modal to separate component
 export default {
   name: 'Grid',
+  components: {
+    Points,
+  },
   data() {
     return {
       showGrid: false,
@@ -55,11 +55,15 @@ export default {
       cards: null,
       gridSize: 2,
       guess: [],
-      counter: '00:00:00',
-      points: 0,
+      timer: '00:00:00',
       showModalForm: false,
       playerName: '',
     };
+  },
+  computed: {
+    points() {
+      return this.$store.state.points;
+    },
   },
   methods: {
     startGame() {
@@ -71,7 +75,7 @@ export default {
       // using easytimer.js to create a timer for each game
       timer.start();
       timer.addEventListener('secondsUpdated', () => {
-        this.counter = timer.getTimeValues().toString();
+        this.timer = timer.getTimeValues().toString();
       });
     },
     createGrid() {
@@ -137,8 +141,8 @@ export default {
         });
         this.guess = [];
       }, 500);
-      this.points += 1;
-      if (this.points === this.gridSize / 2) {
+      this.incrementPoints();
+      if (this.$store.state.points === this.gridSize / 2) {
         this.gameCompleted();
       }
     },
@@ -159,9 +163,13 @@ export default {
         this.guess = [];
       }, 500);
     },
+    incrementPoints() {
+      this.$store.commit('increment');
+      console.log(this.$store.state.points);
+    },
     gameCompleted() {
       timer.stop();
-      console.log(this.counter);
+      console.log(this.timer);
       const vm = this;
       setTimeout(() => {
         vm.showModalForm = true;

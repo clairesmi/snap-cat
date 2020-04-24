@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Grid msg="Welcome to Your Vue.js App"/>
+    <Grid />
   </div>
 </template>
 
