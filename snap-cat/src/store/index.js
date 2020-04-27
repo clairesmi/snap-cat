@@ -25,8 +25,8 @@ export default new Vuex.Store({
     },
     stopTimer(state) {
       state.timer = timer.getTimeValues().toString();
+      // get seconds in order to be able to rank players in the leaderboard
       state.seconds = timer.getTimeValues().seconds;
-      console.log(state.seconds);
       timer.stop();
     },
   },

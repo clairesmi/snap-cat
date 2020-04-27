@@ -18,8 +18,7 @@ import StartScreen from './StartScreen.vue';
 import Points from './Points.vue';
 import GameTimer from './GameTimer.vue';
 import ModalForm from './ModalForm.vue';
-// to dos:
-// set up backend for leaderboard
+
 export default {
   name: 'Grid',
   components: {
