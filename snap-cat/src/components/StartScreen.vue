@@ -2,7 +2,6 @@
   <div id="start-screen">
     <h1>sNaPcAT</h1>
     <h2>are you ready?</h2>
-    <!-- leaderboard component here -->
     <button @click="$emit('game-started')">Play</button>
     <div>
       <h2>leaderboard</h2>
@@ -30,7 +29,7 @@ export default {
     async getScores() {
       try {
         const res = await axios.get('/api/scores');
-        this.scores = res.data;
+        this.scores = res.data.sort((a, b) => b.seconds - a.seconds).splice(0, 10);
       } catch (err) {
         console.log(err);
       }

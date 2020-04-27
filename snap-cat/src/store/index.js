@@ -11,6 +11,7 @@ export default new Vuex.Store({
   state: {
     points: 0,
     timer: '00:00:00',
+    seconds: 0,
   },
   mutations: {
     increment(state) {
@@ -24,6 +25,8 @@ export default new Vuex.Store({
     },
     stopTimer(state) {
       state.timer = timer.getTimeValues().toString();
+      state.seconds = timer.getTimeValues().seconds;
+      console.log(state.seconds);
       timer.stop();
     },
   },

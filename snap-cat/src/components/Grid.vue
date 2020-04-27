@@ -8,7 +8,7 @@
         <game-timer :timer="timer"></game-timer>
         <points :points="points"></points>
       <div class="grid-wrapper"></div>
-      <modal-form v-if="showModalForm" :timer="timer"></modal-form>
+      <modal-form v-if="showModalForm" :timer="timer" :seconds="seconds"></modal-form>
     </div>
   </div>
 </template>
@@ -44,6 +44,9 @@ export default {
     },
     timer() {
       return this.$store.state.timer;
+    },
+    seconds() {
+      return this.$store.state.seconds;
     },
   },
   methods: {
