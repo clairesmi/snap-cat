@@ -8,7 +8,7 @@
         <game-timer :timer="timer"></game-timer>
         <points :points="points"></points>
       <div class="grid-wrapper"></div>
-      <modal-form v-if="showModalForm" :playerName="playerName" :timer="timer"></modal-form>
+      <modal-form v-if="showModalForm" :timer="timer"></modal-form>
     </div>
   </div>
 </template>
@@ -33,10 +33,9 @@ export default {
       showGrid: false,
       grid: null,
       cards: null,
-      gridSize: 30,
+      gridSize: 2,
       guess: [],
       showModalForm: false,
-      playerName: '',
     };
   },
   computed: {

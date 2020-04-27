@@ -7,19 +7,35 @@
       <input
       type="text"
       placeholder="your name"
-      :v-model="playerName"
+      v-model="name"
       />
-      <button>Submit</button>
+      <button @click="submitTime">Submit</button>
       </form>
     </div>
   </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   name: 'modal-form',
   props: {
-    playerName: String,
     timer: String,
+  },
+  data() {
+    return {
+      name: '',
+    };
+  },
+  methods: {
+    async submitTime() {
+      const data = { name: this.name, time: this.timer };
+      try {
+        await axios.post('/api/scores', data);
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
 };
 </script>
