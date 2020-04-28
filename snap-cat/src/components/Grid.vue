@@ -1,14 +1,18 @@
 <template>
   <div id="grid">
     <div v-show="!showGrid" class="start-screen">
-      <start-screen v-on:game-started="startGame"></start-screen>
+      <start-screen @game-started="startGame"></start-screen>
     </div>
     <div v-show="showGrid">
       <h1>sNaPcAT</h1>
         <game-timer :timer="timer"></game-timer>
         <points :points="points"></points>
       <div class="grid-wrapper"></div>
-      <modal-form v-if="showModalForm" :timer="timer" :seconds="seconds"></modal-form>
+      <modal-form v-if="showModalForm"
+      @score-submitted="scoreSubmitted"
+      :timer="timer"
+      :seconds="seconds">
+      </modal-form>
     </div>
   </div>
 </template>
@@ -34,7 +38,7 @@ export default {
       showGrid: false,
       grid: null,
       cards: null,
-      gridSize: 30,
+      gridSize: 2,
       guess: [],
       showModalForm: false,
     };
@@ -129,8 +133,7 @@ export default {
           return chosenCard;
         });
         vm.guess = [];
-        console.log(this.cards);
-      }, 500);
+      }, 400);
       this.incrementPoints();
       if (this.$store.state.points === this.gridSize / 2) {
         this.gameCompleted();
@@ -151,7 +154,7 @@ export default {
           return chosenCard;
         });
         vm.guess = [];
-      }, 500);
+      }, 400);
     },
     incrementPoints() {
       this.$store.commit('increment');
@@ -162,6 +165,11 @@ export default {
       setTimeout(() => {
         vm.showModalForm = true;
       }, 500);
+    },
+    scoreSubmitted() {
+      console.log('submit');
+      this.showModalForm = false;
+      this.showGrid = false;
     },
   },
 };
@@ -177,8 +185,8 @@ export default {
 .grid-wrapper {
   display: flex;
   flex-wrap: wrap;
-  min-width: 80vw;
-  min-height: 80vh;
+  width: 80vw;
+  height: 80vh;
   padding: 40px;
 }
 .grid-wrapper >>> .front {

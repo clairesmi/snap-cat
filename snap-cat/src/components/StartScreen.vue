@@ -3,7 +3,7 @@
     <h1>sNaPcAT</h1>
     <h2>are you ready?</h2>
     <button @click="$emit('game-started')">Play</button>
-    <div>
+    <div v-if="scores">
       <h2>leaderboard</h2>
       <div class="scoreboard" v-for="score in scores" :key="score._id">
         <p class="name">{{ score.name }}</p><p class="time">{{ score.time }}</p>

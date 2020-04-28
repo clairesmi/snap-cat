@@ -9,7 +9,7 @@
       placeholder="your name"
       v-model="name"
       />
-      <button @click="submitTime">Submit</button>
+      <button @click.prevent="submitTime">Submit</button>
       </form>
     </div>
   </div>
@@ -31,9 +31,9 @@ export default {
   methods: {
     async submitTime() {
       const data = { name: this.name, time: this.timer, seconds: this.seconds };
-      console.log(data);
       try {
         await axios.post('/api/scores', data);
+        this.$emit('score-submitted');
       } catch (err) {
         console.log(err);
       }
