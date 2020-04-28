@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import StartScreen from './StartScreen.vue';
 import Points from './Points.vue';
 import GameTimer from './GameTimer.vue';
@@ -29,13 +30,17 @@ export default {
   },
   data() {
     return {
+      images: [],
       showGrid: false,
       grid: null,
       cards: null,
-      gridSize: 2,
+      gridSize: 6,
       guess: [],
       showModalForm: false,
     };
+  },
+  mounted() {
+    this.getImages();
   },
   computed: {
     points() {
@@ -49,6 +54,15 @@ export default {
     },
   },
   methods: {
+    async getImages() {
+      try {
+        const res = await axios.get('cat-pics.json');
+        this.images = res.data.data;
+        console.log(this.images);
+      } catch (err) {
+        console.log(err);
+      }
+    },
     startGame() {
       this.showGrid = !this.showGrid;
       this.createGrid();
@@ -57,21 +71,22 @@ export default {
     createGrid() {
       this.grid = document.querySelector('.grid-wrapper');
       for (let i = 0; i < this.gridSize; i += 1) {
-        this.grid.appendChild(document.createElement('div')).classList.add('card', 'back', `${i}`);
+        this.grid.appendChild(document.createElement('div')).classList.add('card', 'back');
       }
       this.cards = document.querySelectorAll('.card');
       this.shuffleCards();
-      this.cards.map((card, i) => {
-        const cardText = card;
+      this.cards.forEach((card, i) => {
+        const cardContent = card;
         if (i < this.gridSize / 2) {
-          cardText.innerHTML = `<div class="card-text">${i + 1}</div>`;
+          cardContent.innerHTML = `<img class="card-text" src=${this.images[i].image} alt=${this.images[i].alt}/>`;
         }
         if (i >= this.gridSize / 2) {
-          cardText.innerHTML = `<div class="card-text">${(i - this.gridSize / 2) + 1}</div>`;
+          cardContent.innerHTML = `<img class="card-text" src=${this.images[i - (this.gridSize / 2)].image} alt=${this.images[i - (this.gridSize / 2)].alt}/>`;
         }
-        return cardText;
+        return cardContent;
       });
-      this.cards.map((card) => card.addEventListener('click', this.handleClick));
+      console.log(this.cards);
+      this.cards.forEach((card) => card.addEventListener('click', this.handleClick));
     },
     shuffleCards() {
       const shuffledCards = [];
@@ -85,11 +100,14 @@ export default {
       this.cards = shuffledCards;
     },
     handleClick(e) {
+      console.log('clicked');
       e.target.classList.replace('back', 'front');
       if (this.guess.length !== 2) {
         this.guess.push(e.target);
+        console.log(this.guess);
       }
       this.checkForMatch();
+      console.log(this.$store.state);
     },
     checkForMatch() {
       if (this.guess.length === 2) {
@@ -108,14 +126,17 @@ export default {
       });
       const vm = this;
       setTimeout(() => {
+        console.log(vm.guess);
         vm.guess.map((card) => card.classList.replace('front', 'matched'));
-        this.guess.map((card) => {
+        vm.guess.map((card) => {
           const chosenCard = card;
+          console.log(chosenCard);
           chosenCard.style.boxShadow = '';
           chosenCard.removeEventListener('click', this.handleClick);
           return chosenCard;
         });
-        this.guess = [];
+        vm.guess = [];
+        console.log(this.cards);
       }, 500);
       this.incrementPoints();
       if (this.$store.state.points === this.gridSize / 2) {
@@ -131,12 +152,12 @@ export default {
       const vm = this;
       setTimeout(() => {
         vm.guess.map((card) => card.classList.replace('front', 'back'));
-        this.guess.map((card) => {
+        vm.guess.map((card) => {
           const chosenCard = card;
           chosenCard.style.boxShadow = '';
           return chosenCard;
         });
-        this.guess = [];
+        vm.guess = [];
       }, 500);
     },
     incrementPoints() {
@@ -178,6 +199,10 @@ export default {
   background: azure;
   border-radius: 5px;
 }
+.grid-wrapper >>> .front > .card-text {
+  width: 100px;
+  height: 140px;
+}
 .grid-wrapper >>> .back {
   display: flex;
   align-items: center;
@@ -188,6 +213,7 @@ export default {
   margin: 10px;
   background: darkcyan;
   border-radius: 5px;
+  cursor: pointer;
 }
 .grid-wrapper >>> .back > .card-text {
   display: none;

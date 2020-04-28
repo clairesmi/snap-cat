@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "image": "./assets/Lil-Bub-2013.jpg",
+      "alt": "lil-bub"
+    },
+    {
+      "id": 2,
+      "image": "./assets/DisneyCheshireCat.jpg",
+      "alt": "cheshire-cat"
+    },
+    {
+      "id": 3,
+      "image": "./assets/bagpuss.jpeg",
+      "alt": "cheshire-cat"
+    }
+  ]
+}

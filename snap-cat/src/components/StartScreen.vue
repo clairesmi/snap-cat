@@ -29,7 +29,7 @@ export default {
     async getScores() {
       try {
         const res = await axios.get('/api/scores');
-        this.scores = res.data.sort((a, b) => b.seconds - a.seconds).splice(0, 10);
+        this.scores = res.data.sort((a, b) => a.seconds - b.seconds).splice(0, 10);
       } catch (err) {
         console.log(err);
       }

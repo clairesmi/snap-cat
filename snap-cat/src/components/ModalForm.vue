@@ -9,7 +9,7 @@
       placeholder="your name"
       v-model="name"
       />
-      <button @click.prevent="submitTime">Submit</button>
+      <button @click="submitTime">Submit</button>
       </form>
     </div>
   </div>
