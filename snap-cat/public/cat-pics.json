@@ -12,8 +12,54 @@
     },
     {
       "id": 3,
-      "image": "./assets/bagpuss.jpeg",
-      "alt": "cheshire-cat"
+      "image": "./assets/bagpuss.jpg",
+      "alt": "bagpuss"
+    },
+    {
+      "id": 4,
+      "image": "./assets/tom.jpg",
+      "alt": "tom-jerry"
+    },
+    {
+    "id": 5,
+    "image": "./assets/grumpy-cat.jpg",
+    "alt": "grumpy-cat"
+    },
+    {
+      "id": 6,
+      "image": "./assets/angry-cat.jpg",
+      "alt": "angry-cat"
+    },
+    {
+      "id": 7,
+      "image": "./assets/bread-cat.jpg",
+      "alt": "bread-cat"
+    },
+    {
+      "id": 8,
+      "image": "./assets/hairy-cat.jpg",
+      "alt": "hairy-cat"
+    },
+    {
+      "id": 9,
+      "image": "./assets/mona-cat.jpg",
+      "alt": "mona-cat"
+    },
+    {
+      "id": 10,
+      "image": "./assets/garfield.jpg",
+      "alt": "garfield"
+    },
+    {
+      "id": 11,
+      "image": "./assets/felix.jpg",
+      "alt": "felix"
+    },
+    {
+      "id": 12,
+      "image": "./assets/pink-panther.jpg",
+      "alt": "pink-panther"
     }
+
   ]
 }

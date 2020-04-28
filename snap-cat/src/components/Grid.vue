@@ -34,7 +34,7 @@ export default {
       showGrid: false,
       grid: null,
       cards: null,
-      gridSize: 6,
+      gridSize: 24,
       guess: [],
       showModalForm: false,
     };
@@ -58,7 +58,6 @@ export default {
       try {
         const res = await axios.get('cat-pics.json');
         this.images = res.data.data;
-        console.log(this.images);
       } catch (err) {
         console.log(err);
       }
@@ -85,7 +84,6 @@ export default {
         }
         return cardContent;
       });
-      console.log(this.cards);
       this.cards.forEach((card) => card.addEventListener('click', this.handleClick));
     },
     shuffleCards() {
@@ -100,14 +98,11 @@ export default {
       this.cards = shuffledCards;
     },
     handleClick(e) {
-      console.log('clicked');
       e.target.classList.replace('back', 'front');
       if (this.guess.length !== 2) {
         this.guess.push(e.target);
-        console.log(this.guess);
       }
       this.checkForMatch();
-      console.log(this.$store.state);
     },
     checkForMatch() {
       if (this.guess.length === 2) {
@@ -126,11 +121,9 @@ export default {
       });
       const vm = this;
       setTimeout(() => {
-        console.log(vm.guess);
         vm.guess.map((card) => card.classList.replace('front', 'matched'));
         vm.guess.map((card) => {
           const chosenCard = card;
-          console.log(chosenCard);
           chosenCard.style.boxShadow = '';
           chosenCard.removeEventListener('click', this.handleClick);
           return chosenCard;
