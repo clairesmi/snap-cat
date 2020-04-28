@@ -27,8 +27,8 @@
     },
     {
       "id": 6,
-      "image": "./assets/angry-cat.jpg",
-      "alt": "angry-cat"
+      "image": "./assets/judy-cat.jpg",
+      "alt": "judy-cat"
     },
     {
       "id": 7,
@@ -59,7 +59,21 @@
       "id": 12,
       "image": "./assets/pink-panther.jpg",
       "alt": "pink-panther"
+    },
+    {
+      "id": 13,
+      "image": "./assets/henrys-cat.jpg",
+      "alt": "henrys-cat"
+    },
+    {
+      "id": 14,
+      "image": "./assets/orangey.jpg",
+      "alt": "orangey"
+    },
+    {
+      "id": 15,
+      "image": "./assets/sphynx.jpg",
+      "alt": "sphynx"
     }
-
   ]
 }
