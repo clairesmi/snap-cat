@@ -38,7 +38,6 @@ export default new Vuex.Store({
       } catch (err) {
         console.log(err);
       }
-      // state.scores = this.scores
     },
   },
 });
