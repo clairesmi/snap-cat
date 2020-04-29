@@ -98,7 +98,7 @@ export default {
   border: solid #FA7E61 0.5px;
   width: 100%;
   height: 10%;
-  padding: 0px 5px;
+  padding: 3px 5px;
   align-content: center;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
@@ -106,7 +106,7 @@ export default {
   margin: 3px;
 }
 .name {
-  width: 20%;
+  width: 60%;
   padding-right: 20px;
   margin: 0px;
   align-self: center;

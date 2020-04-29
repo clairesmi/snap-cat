@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const scoreSchema = new mongoose.Schema({
-  name: { type: String, required: true, maxlength: 20 },
+  name: { type: String, required: true, maxlength: 15 },
   time: { type: String, required: true },
   seconds: { type: Number, required: true },
 }, {
