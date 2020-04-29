@@ -253,6 +253,8 @@ export default {
   border-radius: 5px;
 }
 .grid-wrapper >>> .matched > .card-text {
+  width: 90%;
+  height: 90%;
   display: none;
 }
 </style>

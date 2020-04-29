@@ -77,7 +77,7 @@ export default {
 .scoreboard-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 100%;
   height: 40vh;
   padding-top: 20px;
