@@ -1,6 +1,6 @@
 <template>
   <div id="modal-form" class="modal-overlay">
-    <div class="modal-text animated zoomIn">
+    <div class="modal-text animated tada">
       <p class="msg">Excellent! Your time was:</p><p class="timer">{{ timer }}</p>
       <p class="msg">Please enter your name to submit your time:</p>
       <form class="form">

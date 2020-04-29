@@ -43,7 +43,7 @@ export default {
       showGrid: false,
       grid: null,
       cards: null,
-      gridSize: 2,
+      gridSize: 30,
       guess: [],
       showModalForm: false,
     };
