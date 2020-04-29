@@ -8,8 +8,10 @@
         <div class="snap animated slideInLeft">snap</div>
         <div class="cat animated slideInRight">Cat</div>
       </h1>
+      <div class="timer-points">
         <game-timer :timer="timer"></game-timer>
         <points :points="points"></points>
+      </div>
       <div class="grid-wrapper"></div>
       <modal-form v-if="showModalForm"
       @score-submitted="scoreSubmitted"
@@ -185,12 +187,22 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.timer-points {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 5px;
+  font-family: 'Raleway', sans-serif;
+  color: #DB6C79;
+  font-weight: bold;
+  font-size: 18px;
+}
 .grid-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   width: 80vw;
   height: 80vh;
-  /* padding: 40px; */
+  padding: 0px 40px;
 }
 .grid-wrapper >>> .front {
   display: flex;
@@ -199,7 +211,7 @@ export default {
   width: 100px;
   height: 140px;
   border: solid black 1px;
-  margin: 10px;
+  margin: 5px;
   background: azure;
   border-radius: 5px;
 }
@@ -214,10 +226,16 @@ export default {
   width: 100px;
   height: 140px;
   border: solid black 1px;
-  margin: 10px;
-  background: darkcyan;
+  margin: 5px;
+  background: beige;
   border-radius: 5px;
   cursor: pointer;
+}
+.grid-wrapper >>> .back:before {
+  content: "?";
+  font-size: 80px;
+  font-family: 'Chicle', cursive;
+  color: #FA7E61;
 }
 .grid-wrapper >>> .back > .card-text {
   display: none;

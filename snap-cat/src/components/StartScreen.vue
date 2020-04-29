@@ -65,9 +65,9 @@ export default {
   display: flex;
   justify-content: center;
   font-family: 'Chicle', cursive;
-  font-size: 120px;
+  font-size: 100px;
   letter-spacing: 2px;
-  margin-bottom: 0px;
+  margin: 10px 0px 0px 0px;
   /* width: 100vw; */
 }
 .snap {
