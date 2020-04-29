@@ -98,7 +98,7 @@ export default {
   border: solid #FA7E61 0.5px;
   width: 100%;
   height: 10%;
-  padding: 3px 5px;
+  padding: 2px 5px;
   align-content: center;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
