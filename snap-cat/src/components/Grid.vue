@@ -4,7 +4,10 @@
       <start-screen @game-started="startGame"></start-screen>
     </div>
     <div v-show="showGrid">
-      <h1>sNaPcAT</h1>
+      <h1 class="snapcat-title animated jello delay-1s">
+        <div class="snap animated slideInLeft">snap</div>
+        <div class="cat animated slideInRight">Cat</div>
+      </h1>
         <game-timer :timer="timer"></game-timer>
         <points :points="points"></points>
       <div class="grid-wrapper"></div>
@@ -187,7 +190,7 @@ export default {
   flex-wrap: wrap;
   width: 80vw;
   height: 80vh;
-  padding: 40px;
+  /* padding: 40px; */
 }
 .grid-wrapper >>> .front {
   display: flex;

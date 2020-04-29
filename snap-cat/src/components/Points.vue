@@ -1,7 +1,7 @@
 <template>
   <div id="points">
     <div>
-      <p>{{ points }}</p>
+      <p>Pairs: {{ points }}</p>
     </div>
   </div>
 </template>

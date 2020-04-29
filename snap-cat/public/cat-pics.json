@@ -2,8 +2,8 @@
   "data": [
     {
       "id": 1,
-      "image": "./assets/Lil-Bub-2013.jpg",
-      "alt": "lil-bub"
+      "image": "./assets/don-gato.jpg",
+      "alt": "don-gato"
     },
     {
       "id": 2,
@@ -17,8 +17,8 @@
     },
     {
       "id": 4,
-      "image": "./assets/tom.jpg",
-      "alt": "tom-jerry"
+      "image": "./assets/Lil-Bub-2013.jpg",
+      "alt": "lil-bub"
     },
     {
     "id": 5,
