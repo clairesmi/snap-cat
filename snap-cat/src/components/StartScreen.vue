@@ -10,7 +10,7 @@
         <div class="cat animated slideInRight">Cat</div>
       </h1>
       <h2 class="are-you-ready-text animated bounceInDown delay-2s">are you ready..?</h2>
-      <button class="start-button animated heartBeat delay-3s"
+      <button class="button animated heartBeat delay-3s"
       @click="$emit('game-started')">
         Play</button>
         </div>
@@ -140,7 +140,7 @@ export default {
   align-items: flex-end;
   /* z-index: -1; */
 }
-.start-button {
+.button {
   width: 50%;
   height: 40px;
   border-radius: 10px;
@@ -154,7 +154,7 @@ export default {
   font-weight: bold;
   /* opacity: 0.5; */
 }
-.start-button:hover {
+.button:hover {
   transform: scale(1.1);
 }
 </style>

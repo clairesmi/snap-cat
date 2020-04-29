@@ -247,7 +247,7 @@ export default {
   width: 100px;
   height: 140px;
   margin: 10px;
-  background: darkcyan;
+  background: beige;
   /* remove opacity to maintain the card's place in the grid */
   opacity: 0;
   border-radius: 5px;
