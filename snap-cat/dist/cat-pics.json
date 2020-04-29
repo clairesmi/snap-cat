@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "image": "./assets/don-gato.jpg",
+      "alt": "don-gato"
+    },
+    {
+      "id": 2,
+      "image": "./assets/DisneyCheshireCat.jpg",
+      "alt": "cheshire-cat"
+    },
+    {
+      "id": 3,
+      "image": "./assets/bagpuss.jpg",
+      "alt": "bagpuss"
+    },
+    {
+      "id": 4,
+      "image": "./assets/Lil-Bub-2013.jpg",
+      "alt": "lil-bub"
+    },
+    {
+    "id": 5,
+    "image": "./assets/grumpy-cat.jpg",
+    "alt": "grumpy-cat"
+    },
+    {
+      "id": 6,
+      "image": "./assets/judy-cat.jpg",
+      "alt": "judy-cat"
+    },
+    {
+      "id": 7,
+      "image": "./assets/bread-cat.jpg",
+      "alt": "bread-cat"
+    },
+    {
+      "id": 8,
+      "image": "./assets/hairy-cat.jpg",
+      "alt": "hairy-cat"
+    },
+    {
+      "id": 9,
+      "image": "./assets/mona-cat.jpg",
+      "alt": "mona-cat"
+    },
+    {
+      "id": 10,
+      "image": "./assets/garfield.jpg",
+      "alt": "garfield"
+    },
+    {
+      "id": 11,
+      "image": "./assets/felix.jpg",
+      "alt": "felix"
+    },
+    {
+      "id": 12,
+      "image": "./assets/pink-panther.jpg",
+      "alt": "pink-panther"
+    },
+    {
+      "id": 13,
+      "image": "./assets/henrys-cat.jpg",
+      "alt": "henrys-cat"
+    },
+    {
+      "id": 14,
+      "image": "./assets/orangey.jpg",
+      "alt": "orangey"
+    },
+    {
+      "id": 15,
+      "image": "./assets/sphynx.jpg",
+      "alt": "sphynx"
+    }
+  ]
+}
