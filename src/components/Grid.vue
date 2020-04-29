@@ -138,7 +138,7 @@ export default {
           return chosenCard;
         });
         vm.guess = [];
-      }, 400);
+      }, 300);
       this.incrementPoints();
       if (this.$store.state.points === this.gridSize / 2) {
         this.gameCompleted();
@@ -159,7 +159,7 @@ export default {
           return chosenCard;
         });
         vm.guess = [];
-      }, 400);
+      }, 300);
     },
     incrementPoints() {
       this.$store.commit('increment');
