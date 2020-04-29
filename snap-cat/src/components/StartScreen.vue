@@ -57,6 +57,9 @@ export default {
   letter-spacing: 2px;
   margin: 10px 0px 0px 0px;
 }
+.title-wrapper {
+  margin-bottom: 35px;
+}
 .snap {
   color: #FF99C8;
 }
@@ -81,7 +84,7 @@ export default {
 }
 .scoreboard-title {
   border: solid #FA7E61 1px;
-  margin: 0px;
+  margin: 0px 2px;
   padding: 5px;
   font-family: 'Raleway', sans-serif;
   width: 100%;
@@ -100,6 +103,7 @@ export default {
   justify-content: center;
   font-family: 'Raleway', sans-serif;
   text-align: left;
+  margin: 3px;
 }
 .name {
   width: 20%;
@@ -119,11 +123,17 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   height: 100vh;
+  width: 30vw;
+}
+.body {
+  width: 25vw;
+  z-index: 1;
 }
 .cat-gif-2 {
   display: flex;
   height: 100vh;
   align-items: flex-end;
+  width: 30vw;
 }
 .button {
   width: 70%;
