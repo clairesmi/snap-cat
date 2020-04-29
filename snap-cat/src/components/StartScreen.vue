@@ -15,7 +15,7 @@
         Play</button>
         </div>
         <div class="scoreboard-body">
-          <div class="scoreboard-wrapper" v-if="scores.length > 0">
+          <div class="scoreboard-wrapper" v-if="scores">
             <h2 class="scoreboard-title">leaderboard</h2>
             <div class="scoreboard" v-for="score in scores" :key="score._id">
               <p class="name">{{ score.name }}</p><p class="time">{{ score.time }}</p>
@@ -29,35 +29,23 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
 
 export default {
   name: 'start-screen',
-  data() {
-    return {
-      scores: [],
-    };
-  },
   mounted() {
-    this.getScores();
+    this.$store.commit('getScores');
   },
-  methods: {
-    // try catch
-    async getScores() {
-      try {
-        const res = await axios.get('/api/scores');
-        this.scores = res.data.sort((a, b) => a.seconds - b.seconds).splice(0, 10);
-      } catch (err) {
-        console.log(err);
-      }
+  computed: {
+    scores() {
+      return this.$store.state.scores;
     },
+
   },
 };
 </script>
 <style>
 #start-screen {
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-around;
   width: 100vw;
 }
@@ -68,7 +56,6 @@ export default {
   font-size: 100px;
   letter-spacing: 2px;
   margin: 10px 0px 0px 0px;
-  /* width: 100vw; */
 }
 .snap {
   color: #FF99C8;
@@ -88,9 +75,9 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* border: solid black 1.5px; */
   width: 100%;
   height: 40vh;
+  padding-top: 20px;
 }
 .scoreboard-title {
   border: solid #FA7E61 1px;
@@ -132,16 +119,14 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   height: 100vh;
-  /* z-index: -1; */
 }
 .cat-gif-2 {
   display: flex;
   height: 100vh;
   align-items: flex-end;
-  /* z-index: -1; */
 }
 .button {
-  width: 50%;
+  width: 70%;
   height: 40px;
   border-radius: 10px;
   font-family: 'Chicle', cursive;
@@ -152,7 +137,6 @@ export default {
   cursor: pointer;
   color: #DB6C79;
   font-weight: bold;
-  /* opacity: 0.5; */
 }
 .button:hover {
   transform: scale(1.1);

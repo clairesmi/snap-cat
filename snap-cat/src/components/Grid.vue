@@ -172,9 +172,9 @@ export default {
       }, 500);
     },
     scoreSubmitted() {
-      console.log('submit');
       this.showModalForm = false;
       this.showGrid = false;
+      this.$store.commit('getScores');
     },
   },
 };

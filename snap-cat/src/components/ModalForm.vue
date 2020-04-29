@@ -1,6 +1,6 @@
 <template>
   <div id="modal-form" class="modal-overlay">
-    <div class="modal-text">
+    <div class="modal-text animated zoomIn">
       <p class="msg">Excellent! Your time was:</p><p class="timer">{{ timer }}</p>
       <p class="msg">Please enter your name to submit your time:</p>
       <form class="form">
@@ -86,7 +86,6 @@ export default {
   text-align: center;
   font-family: 'Raleway', sans-serif;
   font-size: 13px;
+  width: 100%;
 }
-
-
 </style>
