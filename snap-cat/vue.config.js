@@ -12,5 +12,12 @@ module.exports = {
       }
     }
   },
+    // specifying the entry point of the app and the location of the template to be used
+    // pages: {
+    //   index: {
+    //     // entry: "snap-cat/src/main.js",
+    //     template: "snap-cat/public/index.html"
+    //   }
+    // },
 
 }

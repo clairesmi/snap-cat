@@ -216,8 +216,8 @@ export default {
   border-radius: 5px;
 }
 .grid-wrapper >>> .front > .card-text {
-  width: 100px;
-  height: 140px;
+  width: 90%;
+  height: 90%;
 }
 .grid-wrapper >>> .back {
   display: flex;
@@ -251,5 +251,8 @@ export default {
   /* remove opacity to maintain the card's place in the grid */
   opacity: 0;
   border-radius: 5px;
+}
+.grid-wrapper >>> .matched > .card-text {
+  display: none;
 }
 </style>
