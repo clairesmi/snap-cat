@@ -150,6 +150,8 @@ Once the points total is equal to the size of the grid / 2 (written this way so 
 ```
 The stopTimer function is then committed in the Vuex store so that all components have access to the player's time (used in the ModalForm component as well as the StartScreen). 
 
+![Form screenshot](/readme-assets/snapcat-form.png) 
+
 Once the player submits their score into the ModalForm, the page is reset and the getScores function is committed in the store. This is to allow the StartScreen to fetch the newly updated leaderboard with the information submitted to the ModalForm which is a sibling component.
 
 ## Refelection and Future Improvements
