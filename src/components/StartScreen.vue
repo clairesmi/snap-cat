@@ -79,7 +79,7 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  height: 40vh;
+  height: 60vh;
   padding-top: 20px;
 }
 .scoreboard-title {
@@ -98,7 +98,7 @@ export default {
   display: flex;
   border: solid #FA7E61 0.5px;
   width: 100%;
-  height: 15%;
+  height: 10%;
   padding: 5px 7px;
   font-family: 'Raleway', sans-serif;
   text-align: left;
