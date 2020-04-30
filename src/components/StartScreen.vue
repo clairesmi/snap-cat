@@ -106,7 +106,7 @@ export default {
   margin: 3px;
 }
 .name {
-  width: 60%;
+  width: 100%;
   padding-right: 20px;
   margin: 0px;
   align-self: center;
@@ -123,20 +123,20 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   height: 100vh;
-  width: 30vw;
+  width: 25vw;
 }
 .body {
-  width: 25vw;
+  width: 40vw;
   z-index: 1;
 }
 .cat-gif-2 {
   display: flex;
   height: 100vh;
   align-items: flex-end;
-  width: 30vw;
+  width: 25vw;
 }
 .button {
-  width: 70%;
+  width: 50%;
   height: 40px;
   border-radius: 10px;
   font-family: 'Chicle', cursive;
