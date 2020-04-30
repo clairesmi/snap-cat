@@ -98,7 +98,7 @@ export default {
   display: flex;
   border: solid #FA7E61 0.5px;
   width: 100%;
-  height: 10%;
+  height: 15%;
   padding: 5px 7px;
   font-family: 'Raleway', sans-serif;
   text-align: left;
@@ -107,12 +107,14 @@ export default {
 .name {
   width: 100%;
   margin: 0px;
+  padding: 2px;
   align-self: center;
   text-align: left;
 }
 .time {
   width: 100%;
   margin: 0px;
+  padding: 2px;
   align-self: center;
   text-align: right;
 }
