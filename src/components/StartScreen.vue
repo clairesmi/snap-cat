@@ -1,7 +1,7 @@
 <template>
   <div id="start-screen">
     <div class="cat-gif-1">
-      <img src="https://media.giphy.com/media/XGIwsw6hnM8XRNSTSK/giphy.gif" alt="cat-gif">
+      <img class="gif-image" src="https://media.giphy.com/media/XGIwsw6hnM8XRNSTSK/giphy.gif" alt="cat-gif">
     </div>
     <div class="body">
       <div class="title-wrapper">
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="cat-gif-2">
-      <img src="https://media.giphy.com/media/XGIwsw6hnM8XRNSTSK/giphy.gif" alt="cat-gif">
+      <img class="gif-image" src="https://media.giphy.com/media/XGIwsw6hnM8XRNSTSK/giphy.gif" alt="cat-gif">
     </div>
   </div>
 </template>
@@ -92,48 +92,49 @@ export default {
 }
 .scoreboard-body {
   display: flex;
+  flex-wrap: wrap;
 }
 .scoreboard {
   display: flex;
   border: solid #FA7E61 0.5px;
   width: 100%;
   height: 10%;
-  padding: 2px 5px;
-  align-content: center;
-  justify-content: center;
+  padding: 5px 7px;
   font-family: 'Raleway', sans-serif;
   text-align: left;
   margin: 3px;
 }
 .name {
   width: 100%;
-  padding-right: 20px;
   margin: 0px;
   align-self: center;
   text-align: left;
 }
 .time {
-  width: 20%;
-  padding-left: 20px;
+  width: 100%;
   margin: 0px;
   align-self: center;
+  text-align: right;
 }
 .cat-gif-1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   height: 100vh;
-  width: 25vw;
+  width: 30vw;
 }
 .body {
-  width: 40vw;
+  width: 35vw;
   z-index: 1;
 }
 .cat-gif-2 {
   display: flex;
   height: 100vh;
   align-items: flex-end;
-  width: 25vw;
+  width: 30vw;
+}
+.gif-image {
+  width: 90%;
 }
 .button {
   width: 50%;
