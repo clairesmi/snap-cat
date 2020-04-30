@@ -85,7 +85,7 @@ export default {
 .scoreboard-title {
   border: solid #FA7E61 1px;
   margin: 0px 2px;
-  padding: 5px;
+  padding: 5px 7px;
   font-family: 'Raleway', sans-serif;
   width: 100%;
   color: #DB6C79;
