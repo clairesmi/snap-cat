@@ -138,7 +138,7 @@ export default {
           return chosenCard;
         });
         vm.guess = [];
-      }, 300);
+      }, 200);
       this.incrementPoints();
       if (this.$store.state.points === this.gridSize / 2) {
         this.gameCompleted();
@@ -159,7 +159,7 @@ export default {
           return chosenCard;
         });
         vm.guess = [];
-      }, 300);
+      }, 200);
     },
     incrementPoints() {
       this.$store.commit('increment');
@@ -175,6 +175,12 @@ export default {
       this.showModalForm = false;
       this.showGrid = false;
       this.$store.commit('getScores');
+      this.cards = null;
+      this.$store.state.points = 0;
+      //  remove cards from grid to reset
+      for (let i = this.gridSize; i > 0; i -= 1) {
+        this.grid.removeChild(this.grid.childNodes[0]);
+      }
     },
   },
 };
