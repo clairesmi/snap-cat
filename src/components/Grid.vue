@@ -126,19 +126,19 @@ export default {
       this.guess.map((card) => {
         const chosenCard = card;
         chosenCard.style.boxShadow = '2px 2px 20px 2px green';
+        chosenCard.removeEventListener('click', this.handleClick);
         return chosenCard;
       });
       const vm = this;
       setTimeout(() => {
-        vm.guess.map((card) => card.classList.replace('front', 'matched'));
-        vm.guess.map((card) => {
+        vm.cards.map((card) => {
           const chosenCard = card;
           chosenCard.style.boxShadow = '';
-          chosenCard.removeEventListener('click', this.handleClick);
+          chosenCard.classList.replace('front', 'matched');
           return chosenCard;
         });
-        vm.guess = [];
-      }, 200);
+      }, 300);
+      this.guess = [];
       this.incrementPoints();
       if (this.$store.state.points === this.gridSize / 2) {
         this.gameCompleted();
@@ -152,14 +152,14 @@ export default {
       });
       const vm = this;
       setTimeout(() => {
-        vm.guess.map((card) => card.classList.replace('front', 'back'));
-        vm.guess.map((card) => {
+        vm.cards.map((card) => card.classList.replace('front', 'back'));
+        vm.cards.map((card) => {
           const chosenCard = card;
           chosenCard.style.boxShadow = '';
           return chosenCard;
         });
-        vm.guess = [];
-      }, 200);
+      }, 300);
+      this.guess = [];
     },
     incrementPoints() {
       this.$store.commit('increment');
