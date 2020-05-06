@@ -1,6 +1,6 @@
 const Score = require('../models/Score');
 
-// index route /creatures
+// index route
 
 function index(req, res) {
   Score
@@ -9,7 +9,7 @@ function index(req, res) {
     .catch((err) => console.log(err));
 }
 
-// create route /creatures (collection page)
+// create route
 
 function create(req, res, next) {
   // req.body.user = req.currentUser
